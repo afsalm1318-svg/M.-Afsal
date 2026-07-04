@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Afsal · 16y pro dev</title>
+  <!-- Google Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #08090e;
+      color: #eef2f8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.8rem 1rem;
+      background-image: radial-gradient(circle at 20% 30%, #1a1f2e 0%, #0a0b12 90%);
+    }
+
+    .glass-card {
+      max-width: 1200px;
+      width: 100%;
+      background: rgba(16, 19, 30, 0.7);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border-radius: 3rem;
+      padding: 2.8rem 3rem;
+      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: 0.2s;
+    }
+
+    /* ----- HEADER / IDENTITY ----- */
+    .identity {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.8rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding-bottom: 1.8rem;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(145deg, #2c3148, #161b2a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 2rem;
+      color: #b7ceff;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.7);
+    }
+
+    .badge-text h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #f0f6ff, #a5c2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+    }
+
+    .badge-text .subhead {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #8b9bbd;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .subhead i {
+      color: #5f7bb3;
+      font-size: 0.9rem;
+    }
+
+    .status-pill {
+      background: rgba(70, 130, 255, 0.12);
+      border: 1px solid rgba(70, 130, 255, 0.15);
+      padding: 0.5rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #b6ccff;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .status-pill i {
+      color: #6effa8;
+      font-size: 0.7rem;
+    }
+
+    /* ----- GRID LAYOUT ----- */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2.8rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ----- LEFT PANEL (ABOUT + SKILLS) ----- */
+    .about h2, .skills h2, .projects h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #899bc0;
+      margin-bottom: 1.2rem;
+      border-left: 4px solid #3f66c0;
+      padding-left: 0.9rem;
+    }
+
+    .about p {
+      color: #cfdbf5;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    .highlight {
+      color: #b7ceff;
+      font-weight: 600;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 0.9rem;
+      margin-top: 0.2rem;
+    }
+
+    .skill-tag {
+      background: rgba(40, 50, 80, 0.4);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #d6e2ff;
+      letter-spacing: 0.2px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: 0.15s;
+    }
+
+    .skill-tag i {
+      margin-right: 0.5rem;
+      color: #6c8ed4;
+      font-size: 0.8rem;
+    }
+
+    .skill-tag:hover {
+      background: rgba(60, 80, 140, 0.4);
+      border-color: rgba(130, 170, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* radar / chart (visual) */
+    .radar-wrapper {
+      margin: 2rem 0 0.5rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 2rem;
+      padding: 1.8rem 1rem 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .radar-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .radar-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .radar-item .circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: conic-gradient(#3f66c0 calc(var(--pct) * 1%), #20263f calc(var(--pct) * 1%));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: white;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    }
+
+    .radar-item .circle span {
+      background: #10131f;
+      padding: 0.2rem 0.5rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+    }
+
+    .radar-item .label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #9aafd6;
+      letter-spacing: 0.3px;
+    }
+
+    /* ----- PROJECTS (right) ----- */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .project-item {
+      background: rgba(24, 28, 44, 0.4);
+      backdrop-filter: blur(4px);
+      border-radius: 1.8rem;
+      padding: 1.4rem 1.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      transition: 0.2s ease;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-item:hover {
+      background: rgba(36, 42, 68, 0.5);
+      border-color: rgba(120, 160, 255, 0.08);
+      transform: scale(1.01);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-header h3 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #e6edff;
+    }
+
+    .project-header i {
+      color: #6c8ed4;
+      font-size: 1.2rem;
+      opacity: 0.7;
+    }
+
+    .project-desc {
+      color: #b7c9eb;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0.3rem 0 0.6rem;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+      margin-top: 0.4rem;
+    }
+
+    .project-stack span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(50, 70, 120, 0.3);
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      color: #b1c7f0;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .project-stack i {
+      margin-right: 0.3rem;
+      font-size: 0.6rem;
+      color: #6783c7;
+    }
+
+    .cta-link {
+      margin-top: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #7f9fe0;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: 0.2s;
+    }
+
+    .cta-link i {
+      font-size: 0.7rem;
+      transition: 0.2s;
+    }
+
+    .cta-link:hover {
+      color: #b7ceff;
+      border-bottom-color: #3f66c0;
+    }
+
+    .cta-link:hover i {
+      transform: translateX(4px);
+    }
+
+    /* footer / social */
+    .social-links {
+      margin-top: 2.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1.8rem 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      padding-top: 2rem;
+    }
+
+    .social-links a {
+      color: #8d9fc9;
+      font-size: 1.4rem;
+      transition: 0.2s;
+      opacity: 0.7;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .social-links a i {
+      font-size: 1.5rem;
+    }
+
+    .social-links a:hover {
+      color: #c7daff;
+      opacity: 1;
+      transform: translateY(-3px);
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .glass-card {
+        padding: 1.8rem;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .identity {
+        flex-direction: column;
+        align-items: start;
+        gap: 1rem;
+      }
+      .badge-text h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .glass-card {
+        padding: 1.5rem;
+        border-radius: 2rem;
+      }
+      .avatar {
+        width: 52px;
+        height: 52px;
+        font-size: 1.6rem;
+      }
+      .badge-text h1 {
+        font-size: 1.8rem;
+      }
+      .radar-item .circle {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="glass-card">
+
+  <!-- HEADER -->
+  <div class="identity">
+    <div class="badge">
+      <div class="avatar">A</div>
+      <div class="badge-text">
+        <h1>Afsal</h1>
+        <div class="subhead">
+          <i class="fas fa-code"></i> 16y · professional programmer
+        </div>
+      </div>
+    </div>
+    <div class="status-pill">
+      <i class="fas fa-circle"></i> open to work
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="grid-2">
+
+    <!-- LEFT: ABOUT + SKILLS + RADAR -->
+    <div class="left-panel">
+      <div class="about">
+        <h2><i class="fas fa-user-astronaut" style="margin-right: 10px; color: #3f66c0;"></i> about</h2>
+        <p>
+          Hi, I'm <span class="highlight">Afsal</span> – 16 years old and 
+          <strong>professional full‑stack developer</strong> with 4+ years of 
+          experience. I build <span class="highlight">scalable</span> apps, 
+          APIs, and elegant UIs. Currently exploring AI & edge computing.
+        </p>
+      </div>
+
+      <div class="skills">
+        <h2><i class="fas fa-cog" style="margin-right: 10px; color: #3f66c0;"></i> core stack</h2>
+        <div class="skill-tags">
+          <span class="skill-tag"><i class="fab fa-react"></i> React</span>
+          <span class="skill-tag"><i class="fab fa-node-js"></i> Node.js</span>
+          <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+          <span class="skill-tag"><i class="fas fa-database"></i> PostgreSQL</span>
+          <span class="skill-tag"><i class="fab fa-docker"></i> Docker</span>
+          <span class="skill-tag"><i class="fab fa-aws"></i> AWS</span>
+          <span class="skill-tag"><i class="fas fa-code-branch"></i> Git</span>
+          <span class="skill-tag"><i class="fas fa-cloud"></i> GraphQL</span>
+        </div>
+      </div>
+
+      <!-- visual radar (static) -->
+      <div class="radar-wrapper">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem; padding: 0 0.2rem;">
+          <span style="font-size: 0.8rem; font-weight: 600; color: #8fa4d0;"><i class="fas fa-chart-pie"></i> proficiency</span>
+        </div>
+        <div class="radar-grid">
+          <div class="radar-item">
+            <div class="circle" style="--pct: 92;"><span>92%</span></div>
+            <span class="label">JS/TS</span>
+          </div>
+          <div class="radar-item">
+            <div class="circle" style="--pct: 85;"><span>85%</span></div>
+            <span class="label">Python</span>
+          </div>
+          <div class="radar-item">
+            <div class="circle" style="--pct: 78;"><span>78%</span></div>
+            <span class="label">DevOps</span>
+          </div>
+          <div class="radar-item">
+            <div class="circle" style="--pct: 88;"><span>88%</span></div>
+            <span class="label">React</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: PROJECTS -->
+    <div class="right-panel">
+      <div class="projects">
+        <h2><i class="fas fa-rocket" style="margin-right: 10px; color: #3f66c0;"></i> featured work</h2>
+        <div class="project-list">
+          <!-- project 1 -->
+          <div class="project-item">
+            <div class="project-header">
+              <h3>NovaOS</h3>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </div>
+            <div class="project-desc">
+              Full‑stack micro‑services orchestration platform for edge devices. 
+              Handles 10k+ concurrent requests.
+            </div>
+            <div class="project-stack">
+              <span><i class="fab fa-react"></i> React</span>
+              <span><i class="fab fa-node-js"></i> Express</span>
+              <span><i class="fas fa-database"></i> MongoDB</span>
+              <span><i class="fas fa-cloud"></i> Docker</span>
+            </div>
+            <a href="#" class="cta-link">live demo <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <!-- project 2 -->
+          <div class="project-item">
+            <div class="project-header">
+              <h3>Finwise AI</h3>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </div>
+            <div class="project-desc">
+              AI‑driven financial dashboard with real‑time predictions. 
+              Built with Python, FastAPI & React.
+            </div>
+            <div class="project-stack">
+              <span><i class="fab fa-python"></i> FastAPI</span>
+              <span><i class="fab fa-react"></i> React</span>
+              <span><i class="fas fa-database"></i> PostgreSQL</span>
+              <span><i class="fas fa-brain"></i> scikit-learn</span>
+            </div>
+            <a href="#" class="cta-link">case study <i class="fas fa-arrow-right"></i></a>
+          </div>
+
+          <!-- project 3 -->
+          <div class="project-item">
+            <div class="project-header">
+              <h3>EcoChain</h3>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </div>
+            <div class="project-desc">
+              Blockchain‑based supply chain tracker with IoT integration. 
+              Solid smart contracts & real‑time monitoring.
+            </div>
+            <div class="project-stack">
+              <span><i class="fas fa-link"></i> Solidity</span>
+              <span><i class="fab fa-node-js"></i> Node.js</span>
+              <span><i class="fas fa-database"></i> IPFS</span>
+              <span><i class="fas fa-microchip"></i> IoT</span>
+            </div>
+            <a href="#" class="cta-link">explore <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL / FOOTER -->
+  <div class="social-links">
+    <a href="#"><i class="fab fa-github"></i> @afsaldev</a>
+    <a href="#"><i class="fab fa-linkedin-in"></i> afsal-pro</a>
+    <a href="#"><i class="fab fa-x-twitter"></i> afsal_16</a>
+    <a href="#"><i class="fas fa-envelope"></i> afsal@dev.io</a>
+  </div>
+
+</div>
+<!-- end glass-card -->
+
+</body>
+</html>
